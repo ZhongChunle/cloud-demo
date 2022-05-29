@@ -10,6 +10,7 @@
         <module name="eureka-server2" />
         <module name="user-service" />
         <module name="order-service" />
+        <module name="feign-api" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -20,6 +21,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="eureka-server" options="-parameters" />
       <module name="eureka-server2" options="-parameters" />
+      <module name="feign-api" options="-parameters" />
       <module name="order-service" options="-parameters" />
       <module name="user-service" options="-parameters" />
     </option>
