@@ -9,6 +9,13 @@ spring:
   #  微服务名称
   application:
     name: orderserver
+  cloud:
+    nacos:
+      server-addr: http://192.168.41.108:8848 # nacos服务地址
+      discovery:
+        cluster-name:  HZ # 集群名称
+        namespace: 8656bcbd-8886-4032-9ca6-cb89e58ea69d # 命名空间的id
+        ephemeral: false # 改为非临时实例，nacos主动发起请求实例是否健康
 
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
@@ -20,7 +27,20 @@ logging:
   pattern:
     dateformat: MM-dd HH:mm:ss:SSS
 
-eureka:
-  client:
-    service-url: # 配置eureka地址
-      defaultZone: http://127.0.0.1:10086/eureka
+#eureka:
+#  client:
+#    service-url: # 配置eureka地址
+#      defaultZone: http://127.0.0.1:10086/eureka
+
+# 负载均衡
+userservice:
+  ribbon:
+    NFLoadBalancerRuleClassName: com.alibaba.cloud.nacos.ribbon.NacosRule # 负载均衡规则
+
+
+# 开启饥饿加载
+ribbon:
+  eager-load:
+    enabled: true # 开启饥饿加载
+    clients: userserver # 开启饥饿加载的服务名称，是一个集合,一个可以直接写，两个通过 - userserver拼接
+
