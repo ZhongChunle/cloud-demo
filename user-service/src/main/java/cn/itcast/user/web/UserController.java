@@ -50,8 +50,13 @@ public class UserController {
      * @return 用户
      */
     @GetMapping("/{id}")
-    public User queryById(@PathVariable("id") Long id,@RequestHeader(value = "Truth",required = false) String truth) {
-        System.out.println("truth："+truth);
+    public User queryById(@PathVariable("id") Long id,@RequestHeader(value = "Truth",required = false) String truth) throws InterruptedException {
+        // 设置休眠时间
+        if(id == 1){
+            Thread.sleep(60);
+        }else if(id == 2){
+            throw new RuntimeException("故意抛出异常，触发异常比例");
+        }
         return userService.queryById(id);
     }
 }

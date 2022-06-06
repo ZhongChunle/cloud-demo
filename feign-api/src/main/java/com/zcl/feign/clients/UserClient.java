@@ -1,5 +1,6 @@
 package com.zcl.feign.clients;
 
+import com.zcl.feign.clients.fallback.UserClientFallbackFactory;
 import com.zcl.feign.pojo.User;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
  * @author zhong
  * @date 2022-05-29 10:32
  */
-@FeignClient("userserver")
+@FeignClient(value = "userserver",fallbackFactory = UserClientFallbackFactory.class)
 public interface UserClient {
 
     @GetMapping("/user/{id}")
