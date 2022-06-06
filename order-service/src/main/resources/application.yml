@@ -15,7 +15,7 @@ spring:
       discovery:
         cluster-name:  HZ # 集群名称
 #        namespace: 8656bcbd-8886-4032-9ca6-cb89e58ea69d # 命名空间的id
-        ephemeral: false # 改为非临时实例，nacos主动发起请求实例是否健康
+#        ephemeral: false # 改为非临时实例，nacos主动发起请求实例是否健康
 
 mybatis:
   type-aliases-package: cn.itcast.user.pojo
